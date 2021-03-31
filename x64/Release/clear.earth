@@ -16,7 +16,17 @@
         <url>http://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places_Alternate/MapServer</url>
 		<cache_policy usage="read_write"/>
     </image>
-    
+
+     <!--添加国界线-->
+     <image name="world_boundaries" drivers="agglite">
+         <features name="world" driver="ogr">
+             <url>world.shp</url>
+             <build_spatial_index>true</build_spatial_index>
+        </features>
+
+
+
+     </image>    
     <options>
         <!--Specify where to cache the data-->
         <cache type="filesystem">

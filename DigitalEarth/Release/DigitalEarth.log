@@ -1,0 +1,9 @@
+﻿  pch.cpp
+  COSGObject.cpp
+h:\project\mfc\2021.3.26\digitalearth\digitalearth\cosgobject.h(2): fatal error C1083: 无法打开包括文件: “osgViewer/Viewer”: No such file or directory
+  DigitalEarth.cpp
+h:\project\mfc\2021.3.26\digitalearth\digitalearth\cosgobject.h(2): fatal error C1083: 无法打开包括文件: “osgViewer/Viewer”: No such file or directory
+  DigitalEarthDoc.cpp
+  DigitalEarthView.cpp
+h:\project\mfc\2021.3.26\digitalearth\digitalearth\cosgobject.h(2): fatal error C1083: 无法打开包括文件: “osgViewer/Viewer”: No such file or directory
+  MainFrm.cpp
