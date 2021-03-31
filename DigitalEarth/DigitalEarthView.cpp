@@ -23,6 +23,7 @@
 #include "DigitalEarthDoc.h"
 #include "DigitalEarthView.h"
 
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -43,6 +44,7 @@ BEGIN_MESSAGE_MAP(CDigitalEarthView, CView)
 	ON_COMMAND(ID_log, &CDigitalEarthView::Onlog)
 	ON_COMMAND(ID_lat, &CDigitalEarthView::Onlat)
 	ON_COMMAND(ID_hei, &CDigitalEarthView::Onhei)
+	ON_COMMAND(ID_PITCH, &CDigitalEarthView::OnPitch)
 END_MESSAGE_MAP()
 
 // CDigitalEarthView 构造/析构
@@ -257,7 +259,31 @@ void CDigitalEarthView::OnButtonflyto()
 
 	}
 
-	mOSG->FlyTo(flylog,flylat,flyhei);
+	{	//俯仰角
+		CMFCRibbonEdit *edit = dynamic_cast<CMFCRibbonEdit*>(pWnd->m_wndRibbonBar.FindByID(ID_PITCH));
+		if (edit)
+		{
+			CString str = edit->GetEditText();
+			std::string strTemp = CT2A(str.GetBuffer());
+			double pitch = std::atof(strTemp.c_str());
+			if (pitch > 0||pitch<-90)
+			{
+				MessageBox(TEXT("俯仰角在-90~0之间"), TEXT("错误"), MB_OK | MB_ICONERROR);
+				//double转CString
+				str.Format(TEXT("%f"), pitch);
+				edit->SetEditText(str);
+				return;
+			}
+			else
+			{
+				flypitch = pitch;
+			}
+
+		}
+
+	}
+
+	mOSG->FlyTo(flylog,flylat,flyhei,flypitch);
 }
 
 
@@ -278,3 +304,10 @@ void CDigitalEarthView::Onhei()
 {
 	// TODO: 在此添加命令处理程序代码
 }
+
+
+void CDigitalEarthView::OnPitch()
+{
+	// TODO: 在此添加命令处理程序代码
+}
+

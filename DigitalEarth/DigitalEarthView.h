@@ -53,7 +53,7 @@ public:
 
 public:
 	//飞往经纬度
-	double flylog, flylat, flyhei;
+	double flylog, flylat, flyhei, flypitch;
 protected:
 
 // 生成的消息映射函数
@@ -72,6 +72,9 @@ public:
 	afx_msg void Onlog();
 	afx_msg void Onlat();
 	afx_msg void Onhei();
+	afx_msg void OnPitch();
+	afx_msg void OnHome();
+	afx_msg void OnCheck2();
 };
 
 #ifndef _DEBUG  // DigitalEarthView.cpp 中的调试版本

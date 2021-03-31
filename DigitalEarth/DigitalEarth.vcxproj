@@ -188,6 +188,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CLabelControlEventHandler.h" />
     <ClInclude Include="COSGObject.h" />
     <ClInclude Include="DigitalEarth.h" />
     <ClInclude Include="DigitalEarthDoc.h" />
@@ -199,6 +200,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CLabelControlEventHandler.cpp" />
     <ClCompile Include="COSGObject.cpp" />
     <ClCompile Include="DigitalEarth.cpp" />
     <ClCompile Include="DigitalEarthDoc.cpp" />

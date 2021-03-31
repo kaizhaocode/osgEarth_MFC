@@ -16,8 +16,20 @@
 
 #include<osgEarthUtil/Controls>
 #include<osgEarthAnnotation/PlaceNode>
+//键盘事件
+#include<osgViewer/ViewerEventHandlers>
+//osgGA相关的库
+#include<osgGA/StateSetManipulator>
+#include<osgGA/TrackballManipulator>
+#include<osgGA/FlightManipulator>
+#include<osgGA/DriveManipulator>
+#include<osgGA/KeySwitchMatrixManipulator>
+#include<osgGA/AnimationPathManipulator>
+#include<osgGA/TerrainManipulator>//地形
 
 #include"DigitalEarth.h"
+#include"CLabelControlEventHandler.h"
+
 
 class COSGObject
 {
@@ -39,12 +51,16 @@ public:
 	void InitOsgEarth();
 	//添加显示视点信息的控件
 	void addViewPointLabel();
+	CLabelControlEventHandler*labelEvent;
 
 	//新增地标
 	void addLabel();
 
 	//飞往
-	void FlyTo(double flylog,double flylat,double flyhei);
+	void FlyTo(double flylog,double flylat,double flyhei,double flypitch);
+
+	//获取em
+	osgEarth::Util::EarthManipulator *getEM();
 
 public:
 	HWND m_hWnd;
@@ -65,4 +81,12 @@ public:
 	osg::ref_ptr<osg::MatrixTransform>mtplane;
 	//设置机场
 	void addPlane();
+
+	osg::ref_ptr<osg::Node> flyPlane;
+	//飞机角度变化
+	osg::ref_ptr<osg::MatrixTransform> mtFlySelf;
+	//飞机摆放位置
+	osg::ref_ptr<osg::MatrixTransform> mtfly;
+
+
 };
